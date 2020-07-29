@@ -99,14 +99,14 @@
     <!-- Main Section - Weekly -->
     <section class="container-fluid my-5">
       <div class="row justify-content-around no-gutters">
+        <!-- Card Content -->
         <div class="col-2">
-          <!-- Card Content -->
-          <div class="card" style="width: 100%">
+          <div class="card" style="width: 100%" data-card="monday">
             <div class="card-header p-3">
               Monday
             </div>
             <form>
-              <ul class="list-group list-group-flush p-2 py-3" id="task-collection">
+              <ul class="list-group list-group-flush p-2 py-3" id="task-collection" data-list="monday">
                 <div class="input-group">
                   <input
                     type="text"
@@ -116,31 +116,32 @@
                     aria-describedby="button-addon2"
                     id="inputTask"
                     maxlength="10"
+                    data-input="monday"
                   />  
                   <div class="input-group-append">
-                    <input class="btn btn-outline-secondary addTask" type="submit" value="Add" id="button-addon2">
+                    <input class="btn btn-outline-secondary addTask" type="submit" value="Add" id="button-addon2" data-add-task-btn="monday">
                     </input>
                   </div>
                 </div>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
+                <li class="list-group-item data-task="monday"></li>
+                <li class="list-group-item data-task="monday"></li>
+                <li class="list-group-item data-task="monday"></li>
+                <li class="list-group-item data-task="monday"></li>
+                <li class="list-group-item data-task="monday"></li>
+                <li class="list-group-item data-task="monday"></li>
               </ul>
             </form>
             
           </div>
         </div>
+        <!-- Card Content -->
         <div class="col-2">
-          <!-- Card Content -->
-          <div class="card" style="width: 100%">
+          <div class="card" style="width: 100%" data-card="monday">
             <div class="card-header p-3">
               Tuesday
             </div>
             <form>
-              <ul class="list-group list-group-flush p-2 py-3" id="task-collection" >
+              <ul class="list-group list-group-flush p-2 py-3" id="task-collection" data-list="tuesday">
                 <div class="input-group">
                   <input
                     type="text"
@@ -150,18 +151,19 @@
                     aria-describedby="button-addon2"
                     id="inputTask"
                     maxlength="10"
+                    data-input="tuesday"
                   />  
                   <div class="input-group-append">
-                    <input class="btn btn-outline-secondary addTask" type="submit" value="Add" id="button-addon2">
+                    <input class="btn btn-outline-secondary addTask" type="submit" value="Add" id="button-addon2" data-add-task-btn="tuesday">
                     </input>
                   </div>
                 </div>
-                <li class="list-group-item">Work in Progress</li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
+                <li class="list-group-item data-task="tuesday">Work in Progress</li>
+                <li class="list-group-item data-task="tuesday"></li>
+                <li class="list-group-item data-task="tuesday"></li>
+                <li class="list-group-item data-task="tuesday"></li>
+                <li class="list-group-item data-task="tuesday"></li>
+                <li class="list-group-item data-task="tuesday"></li>
               </ul>
             </form>
             

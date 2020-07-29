@@ -5,11 +5,20 @@
 ============================================================================== */
 
 // UI Variables for Task List
-const taskAdd = document.querySelector(`.addTask`);
-const taskInput = document.querySelector(`#inputTask`);
-const taskList = document.querySelector(`#task-collection`);
-const taskPlaceholder = document.querySelector(`.list-group-item`);
+const taskAddBtn = document.querySelector(`[data-add-task-btn]`);
+const taskInput = document.querySelector(`[data-input]`);
+const taskList = document.querySelector(`[data-list]`);
+const taskPlaceholder = document.querySelector(`[data-task]`);
 
+if (taskList.dataset.list === `monday`) {
+        console.log(`monday`);
+}
+
+function myClick(e) {
+        console.log(e.target);
+}
+
+document.body.addEventListener(`click`, myClick);
 // Counts & Limits Tasks
 let x = 1;
 
@@ -148,51 +157,114 @@ function addTask(e) {
 
         // Logic
 
-        if (taskInput.value === ``) {
-                alert(`Please add a task`); // alerts user of empty input
-        } else {
-                // Create List Item & Add Classes
-                listItem.classList.add(`list-group-item`);
-                listItemRemoveLink.classList.add(
-                        `list-group-links`,
-                        `list-group-link-remove`,
-                        `list-group-link-remove:hover`
-                );
-                listItemRemoveIcon.classList.add(`far`, `fa-trash-alt`, `list-group-icon`, `list-group-icon-remove`);
-                listItemDoneLink.classList.add(
-                        `list-group-links`,
-                        `list-group-link-done`,
-                        `list-group-link-done:hover`
-                );
-                listItemDoneIcon.classList.add(`fas`, `fa-check`, `list-group-icon`, `list-group-icon-done`);
-
-                // Add Input Text To List Item
-                listItem.textContent = taskInput.value;
-
-                // Add Icons To List Item
-                listItem.appendChild(listItemRemoveLink);
-                listItemRemoveLink.appendChild(listItemRemoveIcon);
-                listItem.appendChild(listItemDoneLink);
-                listItemDoneLink.appendChild(listItemDoneIcon);
-
-                //       Replace, Add List Item To Page
-                if (x <= 6) {
-                        taskList.replaceChild(listItem, taskList.children[x]); // replaces current items
-                        x += 1;
-                        // Store in Local Storage
-                        storeTaskInLocalStorage(taskInput.value);
-                } else if (x <= 10) {
-                        taskList.appendChild(listItem); // adds 4 new items to the list
-                        x += 1;
-                        // Store in Local Storage
-                        storeTaskInLocalStorage(taskInput.value);
+        if (taskList.dataset.list === `monday`) {
+                console.log(`monday`);
+                if (taskInput.value === ``) {
+                        alert(`Please add a task`); // alerts user of empty input
                 } else {
-                        alert(`The current task limit is 10.`);
+                        // Create List Item & Add Classes
+                        listItem.classList.add(`list-group-item-tuesday`);
+                        listItemRemoveLink.classList.add(
+                                `list-group-links`,
+                                `list-group-link-remove`,
+                                `list-group-link-remove:hover`
+                        );
+                        listItemRemoveIcon.classList.add(
+                                `far`,
+                                `fa-trash-alt`,
+                                `list-group-icon`,
+                                `list-group-icon-remove`
+                        );
+                        listItemDoneLink.classList.add(
+                                `list-group-links`,
+                                `list-group-link-done`,
+                                `list-group-link-done:hover`
+                        );
+                        listItemDoneIcon.classList.add(`fas`, `fa-check`, `list-group-icon`, `list-group-icon-done`);
+
+                        // Add Input Text To List Item
+                        listItem.textContent = taskInput.dataset.input;
+
+                        // Add Icons To List Item
+                        listItem.appendChild(listItemRemoveLink);
+                        listItemRemoveLink.appendChild(listItemRemoveIcon);
+                        listItem.appendChild(listItemDoneLink);
+                        listItemDoneLink.appendChild(listItemDoneIcon);
+
+                        //       Replace, Add List Item To Page
+                        if (x <= 6) {
+                                taskList.dataset.list.replaceChild(listItem, taskList.dataset.list.children[x]); // replaces current items
+                                x += 1;
+                                // Store in Local Storage
+                                storeTaskInLocalStorage(taskInput.dataset.input.value);
+                        } else if (x <= 10) {
+                                taskList.dataset.list.appendChild(listItem); // adds 4 new items to the list
+                                x += 1;
+                                // Store in Local Storage
+                                storeTaskInLocalStorage(taskInput.dataset.input.value);
+                        } else {
+                                alert(`The current task limit is 10.`);
+                        }
+
+                        // Clear Input
+
+                        taskInput.value = ``;
                 }
+        }
 
-                // Clear Input
+        if (taskList.dataset.list === `tuesday`) {
+                console.log(`tuesday`);
+                if (taskInput.value === ``) {
+                        alert(`Please add a task`); // alerts user of empty input
+                } else {
+                        // Create List Item & Add Classes
+                        listItem.classList.add(`list-group-item`);
+                        listItemRemoveLink.classList.add(
+                                `list-group-links`,
+                                `list-group-link-remove`,
+                                `list-group-link-remove:hover`
+                        );
+                        listItemRemoveIcon.classList.add(
+                                `far`,
+                                `fa-trash-alt`,
+                                `list-group-icon`,
+                                `list-group-icon-remove`
+                        );
+                        listItemDoneLink.classList.add(
+                                `list-group-links`,
+                                `list-group-link-done`,
+                                `list-group-link-done:hover`
+                        );
+                        listItemDoneIcon.classList.add(`fas`, `fa-check`, `list-group-icon`, `list-group-icon-done`);
 
-                taskInput.value = ``;
+                        // Add Input Text To List Item
+                        listItem.textContent = taskInput.value;
+
+                        // Add Icons To List Item
+                        listItem.appendChild(listItemRemoveLink);
+                        listItemRemoveLink.appendChild(listItemRemoveIcon);
+                        listItem.appendChild(listItemDoneLink);
+                        listItemDoneLink.appendChild(listItemDoneIcon);
+
+                        //       Replace, Add List Item To Page
+                        if (x <= 6) {
+                                taskList.replaceChild(listItem, taskList.children[x]); // replaces current items
+                                x += 1;
+                                // Store in Local Storage
+                                storeTaskInLocalStorage(taskInput.value);
+                        } else if (x <= 10) {
+                                taskList.appendChild(listItem); // adds 4 new items to the list
+                                x += 1;
+                                // Store in Local Storage
+                                storeTaskInLocalStorage(taskInput.value);
+                        } else {
+                                alert(`The current task limit is 10.`);
+                        }
+
+                        // Clear Input
+
+                        taskInput.value = ``;
+                }
         }
 
         e.preventDefault(); // prevents reload
@@ -201,7 +273,7 @@ function addTask(e) {
 /* Max Char Reached Function */
 
 function charAlert(e) {
-        if (taskInput.value.length >= 20) {
+        if (taskInput.value.length >= 10) {
                 alert(`Whoa! We currently only allow 20 characters per task.`);
         }
 }
@@ -320,8 +392,8 @@ function loadEventListeners() {
         document.addEventListener(`DOMContentLoaded`, getTasks);
 
         // Add Task Submit & Click Event
-        taskAdd.addEventListener(`click`, addTask);
-        taskAdd.addEventListener(`submit`, addTask);
+        taskAddBtn.addEventListener(`click`, addTask);
+        taskAddBtn.addEventListener(`submit`, addTask);
 
         // Max Char. Reached Event
         taskInput.addEventListener(`input`, charAlert);
